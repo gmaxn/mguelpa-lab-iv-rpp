@@ -1,0 +1,161 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
+    :host {
+        border: 1px solid rgb(177, 176, 176);
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2px;
+        background-color: rgb(230, 229, 229);
+        border-radius: 5px;
+    }
+
+    #table-wrapper {
+        overflow-y: scroll;
+        border: 1px solid rgb(177, 176, 176);
+        border-radius: 5px;
+        background-color: whitesmoke;
+        width: 100%;
+        height: 183px;
+        padding: 2px;
+        margin-bottom: 2px;
+    }
+
+    #table-wrapper::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    #table-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(99, 213, 233);
+    }
+
+    #table-wrapper::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+
+    #table-wrapper::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+
+    img {
+        width: 64px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid rgb(51, 51, 51);
+        background-color: black;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0px;
+        width: 100% !important;
+
+    }
+
+    #table-wrapper>table,
+    tbody,
+    tr,
+    td {
+        width: 100% !important;
+        max-height: 44px !important;
+
+    }
+
+
+    #table-wrapper>table>tbody>tr :first-child:hover {
+        background-color: rgb(207, 230, 250);
+    }
+
+    #table-wrapper>table>tbody>tr :first-child>td:last-child {
+        border-top: 1px solid whitesmoke;
+        border-right: 1px solid whitesmoke;
+        border-top-right-radius: 5px;
+        /* padding-top:4px; */
+    }
+
+    #table-wrapper>table>tbody>tr:last-child>td:last-child {
+        border-bottom: 1px solid whitesmoke;
+        border-right: 1px solid whitesmoke;
+        border-bottom-right-radius: 5px;
+        /* padding-bottom:4px; */
+    }
+
+    #table-wrapper>table>tbody>tr:first-child>td:first-child {
+        border-top: 1px solid whitesmoke;
+        border-left: 1px solid whitesmoke;
+        border-top-left-radius: 5px;
+        /* padding-bottom:4px; */
+    }
+
+    #table-wrapper>table>tbody>tr:last-child>td:first-child {
+        border-bottom: 1px solid whitesmoke;
+        border-left: 1px solid whitesmoke;
+        border-bottom-left-radius: 5px;
+        /* padding-top:4px; */
+    }
+
+    #table-wrapper>table>tbody>tr>td:not(:first-child) {
+        border-right: 1px solid whitesmoke;
+    }
+
+    #table-wrapper>table>tbody>tr>td:not(:last-child) {
+        border-left: 1px solid whitesmoke;
+    }
+
+    #table-wrapper>table>tbody>tr>td {
+        padding: 2px;
+        background-color: whitesmoke;
+        text-align: left;
+        font-family: 'Roboto', sans-serif;
+        overflow: hidden;
+        /* white-space: nowrap; */
+        width: 150px;
+
+    }
+
+
+    #search-bar {
+        border: 1px solid rgb(177, 176, 176);
+        padding: 2px;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    #search-wrapper>input {
+        width: 100%;
+    }
+
+    .tooltipTrigger .tooltip {
+        display: none;
+    }
+
+    .tooltipTrigger:hover {
+        cursor: pointer;
+    }
+
+    .tooltipTrigger:hover .tooltip {
+        display: inline;
+        position: fixed;
+        /* relative to .tooltipTrigger */
+        left: 10px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+
+<div id="table-wrapper">
+    <table *ngIf="countries">
+        <tbody *ngFor="let country of filtered">
+            <tr [attr.countryName]="country.name" (click)="onSelection($event)">
+                <td style="padding-left:8px">{{country.name.slice(0,14)}}</td>
+                <td><img src="{{country.flag}}" alt="{{country.name}}"></td>
+            <tr>
+        </tbody>
+    </table>
+</div>
+<input id="search-bar" [(ngModel)]="filterTerm" class="form-control form-control-sm" type="text" placeholder="filter country here">

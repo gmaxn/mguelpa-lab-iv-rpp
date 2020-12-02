@@ -1,0 +1,167 @@
+<style>
+    :host {
+        border: 1px solid green;
+        border-style: dashed;
+        height: 100%;
+        margin: 1px 0px 0px 0px;
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    #form {
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 5px;
+        display: inline-grid;
+        width: 500px;
+        margin: 10px;
+        max-height: 80%;
+    }
+
+    #main {
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 1px;
+        grid-column: 1/3;
+        grid-row: 2/3;
+        margin: 0 5px 5px 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #aside {
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 1px;
+        grid-template-columns: 1fr 3fr;
+        grid-column: 3/3;
+        grid-row: 2/3;
+        margin: 0 0 5px 0;
+
+    }
+
+    #footer {
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 1px;
+        grid-template-rows: min-content auto min-content;
+        grid-column: 1/4;
+        grid-row: 3/4;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .input-text-control {
+        border: 1px solid black;
+        border-style: dashed;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: small;
+        color: grey;
+        width: 100%;
+    }
+
+    .input-email-control {
+        border: 1px solid black;
+        border-style: dashed;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: medium;
+        color: grey;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .input-text-control>label {
+        /* border: 1px solid black; */
+        border-radius: 5px;
+        /* border-style: dashed; */
+        margin-bottom: 1px;
+        padding-left: 1px;
+        font-size: medium;
+        color: grey;
+    }
+
+    app-countries-selector {
+        flex: 1;
+    }
+
+    .input-wrapper {
+
+        border: 1px solid black;
+        border-style: dashed;
+        padding: 5px;
+        margin-bottom: 1px;
+        border-radius: 5px;
+        font-size: small;
+        color: grey;
+        width: 100%;
+
+    }
+
+    .form-group {
+        border: 1px solid black;
+        display: inline-flex !important;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 1px;
+    }
+</style>
+
+
+<div id="form" [formGroup]="actorForm">
+    <div id="main">
+        <div class="input-wrapper">
+            <label for="gender">Nombre</label>
+            <input type="text" class="form-control" name="name" id="" formControlName="firstname">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="gender">Apellido</label>
+            <input type="text" class="form-control" name="name" id="" formControlName="lastname">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="gender">Genero</label>
+            <select class="form-control" id="gender" formControlName="gender">
+                <option selected disabled hidden>Seleccione su genero</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+            </select>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="gender">Fecha de nacimiento</label>
+            <input type="date" class="form-control" name="birthdate" id="" formControlName="birthdate">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="name">Nacionalidad</label>
+            <input type="text" class="form-control" name="name" id="" [(ngModel)]="selectedCountry" formControlName="country" disabled>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="name">Foto</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanges($event)"
+                    type="file" id="fileUpload" formControlName="imageUrl">
+                <label class="custom-file-label" for="customFile">Seleccione Archivo</label>
+            </div>
+        </div>
+        
+    </div>
+    <div id="aside">
+        <app-countries-selector (selection)="onSelection($event)" [countries]="countries" [filtered]="countries"></app-countries-selector>
+    </div>
+    <div id="footer"><button style="width:100%;" class="btn btn-primary" (click)="onSubmit()">Registrarse</button></div>
+</div>

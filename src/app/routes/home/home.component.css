@@ -1,0 +1,6 @@
+:host {
+    border: 1px solid green;
+    border-style:dashed;
+    height:100%;
+    margin: 1px 0px 0px 0px;
+}

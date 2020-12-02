@@ -1,0 +1,10 @@
+@import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+:host {
+    border:1px solid red;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    padding:1px;
+
+}
