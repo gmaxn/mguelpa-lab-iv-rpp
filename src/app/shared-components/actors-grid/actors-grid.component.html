@@ -1,0 +1,44 @@
+<style>
+    :host {
+        border: 1px solid black;
+        border-radius: 5px;
+        display: flex;
+        flex: 1;
+    }
+
+    table,
+    tr,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<div class="layout" id="table-wrapper">
+    <table *ngIf="list">
+        <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Foto</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let actor of list"
+   
+
+            [attr.actor.id]="actor.id"
+            [attr.actor.firstname]="actor.firstname"
+            [attr.actor.lastname]="actor.lastname"
+            [attr.actor.email]="actor.email"
+            [attr.actor.gender]="actor.gender"
+            [attr.actor.birthdate]="actor.birthdate"
+            [attr.actor.imageUrl]="actor.imageUrl"
+
+            
+            (click)="onSelection($event)">
+                <td>{{actor.firstname}}</td>
+                <td>{{actor.lastname}}</td>
+                <td><img style="width:10%;" src="{{actor.imageUrl}}" alt=""></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

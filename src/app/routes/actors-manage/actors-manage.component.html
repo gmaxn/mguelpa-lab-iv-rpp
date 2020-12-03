@@ -1,0 +1,85 @@
+<style>
+    :host {
+        border: 1px solid black;
+        border-style: dashed;
+        margin: 5px;
+        border-radius: 5px;
+        display: inline-grid;
+        padding: 5px;
+        flex: 1;
+        /* flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+
+    }
+
+    #header {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: min-content auto min-content;
+
+        grid-column: 1/4;
+        grid-row: 1/2;
+
+        border: 1px solid grey;
+        border-radius: 5px;
+        display: flex;
+        margin: 0 0px 5px 0;
+
+    }
+
+
+    #main {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: min-content auto min-content;
+
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 1px;
+        grid-column: 1/3;
+        grid-row: 2/3;
+        display: flex;
+        margin: 0 5px 5px 0;
+    }
+
+    #aside {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: min-content auto min-content;
+
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 1px;
+        grid-column: 3/3;
+        grid-row: 2/3;
+        margin: 0 0 5px 0;
+    }
+
+    #footer {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: min-content auto min-content;
+
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 1px;
+        grid-template-rows: min-content auto min-content;
+        grid-column: 1/4;
+        grid-row: 3/4;
+    }
+</style>
+
+<div id="header">
+    HEADER
+</div>
+
+<div id="main">
+    <app-actors-grid [list]="actorsList" (selection)="onSelection($event)"></app-actors-grid>
+</div>
+
+
+<div id="aside">
+    <app-actor-details [actor]="selectedActor"></app-actor-details>
+</div>
+
+
+<div id="footer">
+    FOOTER
+</div>

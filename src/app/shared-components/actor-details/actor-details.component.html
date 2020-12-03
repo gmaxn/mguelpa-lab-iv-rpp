@@ -1,0 +1,40 @@
+<div id="form" [formGroup]="profileInfo">
+    <div id="main">
+        <div class="input-wrapper">
+            <label for="gender">Nombre</label>
+            <input type="text" class="form-control" name="firstname" formControlName="firstname">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="gender">Apellido</label>
+            <input type="text" class="form-control" name="lastname" formControlName="lastname">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="gender">Genero</label>
+            <select class="form-control" name="gender" formControlName="gender">
+                <option selected disabled hidden>Seleccione su genero</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+            </select>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="gender">Fecha de nacimiento</label>
+            <input type="date" class="form-control" name="birthdate" formControlName="birthdate">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="name">Nacionalidad</label>
+            <input type="text" class="form-control" name="name" formControlName="country" disabled>
+        </div>
+
+        <div class="input-wrapper" >
+            <label for="name">Foto</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" type="file" id="fileUpload">
+                <label class="custom-file-label" for="customFile"></label>
+            </div>
+        </div>
+        
+    </div>

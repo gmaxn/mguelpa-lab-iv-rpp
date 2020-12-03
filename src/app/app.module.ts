@@ -11,6 +11,28 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ImgDropdownSelectorComponent } from './shared-components/img-dropdown-selector/img-dropdown-selector.component';
 
+import { environment } from 'src/environments/environment';
+
+
+// 1. Import the libs you need
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+// import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ActorsManageComponent } from './routes/actors-manage/actors-manage.component';
+import { ActorsGridComponent } from './shared-components/actors-grid/actors-grid.component';
+import { ActorDetailsComponent } from './shared-components/actor-details/actor-details.component';
+
+// 2. Add your credentials from step 1
+const config = {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +40,22 @@ import { ImgDropdownSelectorComponent } from './shared-components/img-dropdown-s
     HomeComponent,
     ActorsRegisterComponent,
     CountriesSelectorComponent,
-    ImgDropdownSelectorComponent
+    ImgDropdownSelectorComponent,
+    ActorsManageComponent,
+    ActorsGridComponent,
+    ActorDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // 3. Initialize
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // firestore
+    // AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [AppComponent]
